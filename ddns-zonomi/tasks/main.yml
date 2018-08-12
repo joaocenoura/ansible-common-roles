@@ -1,0 +1,14 @@
+---
+- name: "ddns-zonomi - dns updater script"
+  template:
+    src=ddns-zonomi.sh.j2
+    dest=/usr/local/bin/ddns-zonomi.sh
+    owner=root mode=755
+  become: true
+
+- name: "ddns-zonomi - add cron hourly job"
+  cron:
+    name="zonomi dns updater"
+    minute="0"
+    job="/usr/local/bin/ddns-zonomi.sh > /var/log/ddns-zonomi.log"
+  become: true

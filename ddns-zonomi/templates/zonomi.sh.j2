@@ -1,0 +1,4 @@
+#!/bin/bash
+API_KEY="{{ zonomi_api_key }}"
+HOST="{{ zonomi_host }}"
+wget -qO- "https://zonomi.com/app/dns/dyndns.jsp?host=$HOST&api_key=$API_KEY"
